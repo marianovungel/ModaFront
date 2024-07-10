@@ -25,6 +25,8 @@ const product = require("./routes/Produto")
 const compra = require("./routes/Compra")
 const stripe = require("./routes/stripe")
 const card = require("./routes/Cartao")
+const Agencia = require("./routes/Agencia")
+const Modelo = require("./routes/Modelo")
 
 app.use("/pic", PicRoute)
 app.use("/auth", user)
@@ -33,6 +35,8 @@ app.use("/product", product)
 app.use("/compra", compra)
 app.use("/pay", stripe)
 app.use("/card", card)
+app.use("/agencia", Agencia)
+app.use("/modelo", Modelo)
 
 
 const PORT=process.env.PORT
