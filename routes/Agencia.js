@@ -12,7 +12,6 @@ router.post("/criar", async(req, res)=>{
         const hashedPass = await bcrypt.hash(req.body.senha, salt)
         const nerUser = new Agencia({
             nome: req.body.nome,
-            email: req.body.email,
             cnpj: req.body.cnpj,
             senha: hashedPass,
         });

@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const Produto = require("../models/Produto")
 const Modelo = require("../models/Modelo")
 const _ = require("underscore")
 
@@ -33,19 +32,10 @@ router.get("/:id", async(req, res)=>{
     }
 
 })
-router.get("/coop/:id", async(req, res)=>{
-    try {
-        const produtos = await Modelo.find({agencia_id: req.params.id})
-        res.status(200).json(produtos);
-    } catch (error) {
-        return res.status(404).json(err);
-    }
-
-})
 
 router.get("/pesquisa/:id", async(req, res)=>{
     try {
-        const produtos = await Modelo.find({nome: req.params.id})
+        const produtos = await Modelo.find({agencia_id: req.params.id})
         res.status(200).json(produtos);
     } catch (error) {
         return res.status(404).json(err);
@@ -74,7 +64,7 @@ router.delete("/:id", async(req, res)=>{
     try {
         const product = await Modelo.findById(req.params.id)
         if(req.headers.idcoop===product.idcoop){
-            await Produto.findByIdAndDelete(req.params.id)
+            await Modelo.findByIdAndDelete(req.params.id)
             return res.status(201).json("Deletado com sucesso!")
         }
         

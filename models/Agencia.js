@@ -15,6 +15,9 @@ const AgenciaSchema = new mongoose.Schema({
     senha:{
         type:String,
     },
+    profilePic:{
+        type:String,
+    },
     ende_bairro:{
         type:String,
         default: ""
